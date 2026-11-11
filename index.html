@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pack verano jugando en inglés – Nivel 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--c1:#00e5ff;--c2:#ffd23f;--c3:#ff7a59;--c4:#7cff6b;--c5:#b388ff;--bad:#ff5c7a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;font-family:'Fredoka','Trebuchet MS',system-ui,sans-serif;font-size:1.08rem;color:#fff;background:linear-gradient(160deg,#16134a,#0f3b5f 60%,#1b5a6b);background-attachment:fixed;-webkit-font-smoothing:antialiased}
+.bg span{position:fixed;font-size:2.2rem;opacity:.22;animation:float 9s ease-in-out infinite;pointer-events:none}
+@keyframes float{50%{transform:translateY(-26px) rotate(12deg)}}
+.app{max-width:920px;margin:0 auto;padding:12px 14px 28px;position:relative}
+header{text-align:center}
+.neon{--g1:var(--c1);--g2:#ff2fd0;margin:.15em 0;font-size:clamp(2rem,8.5vw,4.4rem);line-height:1.08;font-weight:700;letter-spacing:.02em;color:#fff;text-rendering:geometricPrecision;-webkit-text-stroke:.5px #fff;text-shadow:0 0 5px var(--g1),0 0 14px var(--g1),0 0 30px var(--g2);animation:glow 2.4s ease-in-out infinite alternate}
+.neon.sub{--g1:var(--c2);--g2:var(--c3);font-size:clamp(1.2rem,4.6vw,2.1rem)}
+@keyframes glow{from{text-shadow:0 0 4px var(--g1),0 0 10px var(--g1),0 0 22px var(--g2)}to{text-shadow:0 0 6px var(--g1),0 0 18px var(--g1),0 0 38px var(--g2)}}
+.lvl{display:inline-block;margin:.2em 0;padding:.2em 1.2em;border-radius:99px;font-weight:700;font-size:1.3rem;color:#1a1a3a;background:linear-gradient(90deg,var(--c2),var(--c3));box-shadow:0 0 18px var(--c3)}
+.meter{display:flex;align-items:center;gap:10px;justify-content:center;margin:8px 0}
+.bar{flex:0 1 300px;height:12px;border-radius:9px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c4),var(--c1));transition:width .6s}
+nav{display:flex;gap:8px;overflow-x:auto;padding:8px 2px;scrollbar-width:thin}
+.chip{flex:none;font:inherit;font-size:.95rem;padding:.45em .9em;border-radius:99px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer}
+.chip.on{background:var(--c5);border-color:#fff;color:#1a1a3a;font-weight:700}
+.chip.ok::after{content:" ✓";color:var(--c4)}.chip.on.ok::after{color:#136b2c}
+.panel{margin-top:8px;padding:clamp(14px,3vw,26px);border-radius:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);min-height:340px;animation:pop .45s}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+h3{margin:.2em 0 .5em;font-size:1.5rem;color:var(--c2)}
+.q{font-size:1.5rem;color:#fff}.q b{color:var(--c2);letter-spacing:.1em}
+.tip{margin:.2em 0 1em;color:#d6f6ff}
+.pill{display:inline-block;padding:.15em .8em;border-radius:99px;background:rgba(0,229,255,.2);color:var(--c1);font-size:.9rem}
+.btn{font:inherit;font-weight:600;color:#1a1a3a;padding:.6em 1.2em;border:0;border-radius:16px;background:linear-gradient(135deg,var(--c1),var(--c4));cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3);transition:transform .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.3)}
+.btn.go{background:linear-gradient(135deg,var(--c2),var(--c3))}
+.btn.next{background:linear-gradient(135deg,var(--c5),var(--c1))}
+.btn.sm{padding:.4em .8em}
+.btn[hidden]{display:none}
+button:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.opt{font:inherit;font-size:1.2rem;padding:.8em;border-radius:16px;border:3px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;transition:.15s}
+.opt:hover{transform:scale(1.03)}
+.opt.sel{border-color:var(--c2);background:rgba(255,210,63,.25)}
+.opt.good,.row.good{border-color:var(--c4);background:rgba(124,255,107,.25)}
+.row.bad{border-color:var(--bad);background:rgba(255,92,122,.25)}
+.fb{min-height:1.6em;font-weight:600}.fb.good{color:var(--c4)}.fb.bad{color:var(--bad)}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.talk{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.say{width:100%;display:flex;justify-content:space-between;gap:8px;font:inherit;font-size:1.25rem;padding:.55em 1em;border-radius:14px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;cursor:pointer}
+.say:hover{border-color:var(--c1)}.say em{font-style:normal;color:var(--c2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.vc{font:inherit;color:#fff;padding:14px 8px;border-radius:20px;border:2px solid rgba(255,255,255,.25);background:linear-gradient(160deg,rgba(179,136,255,.35),rgba(0,229,255,.25));cursor:pointer;text-align:center}
+.vc:hover{transform:translateY(-4px) rotate(-1.5deg)}
+.vc .e{font-size:2.6rem;display:block}.vc b{font-size:1.7rem;display:block}.vc small{display:block;color:var(--c2)}
+.row{display:flex;gap:10px;align-items:center;margin:8px 0;padding:8px;border-radius:14px;border:2px solid transparent;background:rgba(255,255,255,.06)}
+.row .btn{min-width:110px}
+select{font:inherit;flex:1;padding:.5em;border-radius:12px;background:#22306b;color:#fff;border:2px solid rgba(255,255,255,.3)}
+.zone{min-height:62px;margin:10px 0;padding:10px;display:flex;flex-wrap:wrap;gap:8px;border-radius:16px}
+.zone.ans{border:3px dashed var(--c1);background:rgba(0,229,255,.1)}
+.w{font:inherit;font-size:1.25rem;padding:.4em .9em;border-radius:12px;border:0;background:var(--c2);color:#1a1a3a;font-weight:600;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3)}
+.ws{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;width:min(92%,420px);margin:12px auto}
+.ws button{aspect-ratio:1;font:inherit;font-size:clamp(1rem,5vw,1.5rem);font-weight:700;border-radius:10px;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;padding:0}
+.ws button.sel{background:var(--c2);color:#1a1a3a;transform:scale(1.1)}
+.ws button.found{background:var(--c4);color:#14391c}
+.clues{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
+.clues li.done{color:var(--c4);text-decoration:line-through}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:12px auto}
+.mc{aspect-ratio:1;perspective:600px;border:0;background:none;padding:0;cursor:pointer;font:inherit}
+.mc div{position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;backface-visibility:hidden;transition:transform .45s;font-weight:700;font-size:clamp(.9rem,3.6vw,1.4rem)}
+.mc{position:relative;transform-style:preserve-3d}
+.mc .f{background:linear-gradient(135deg,var(--c5),var(--c1));font-size:2rem}
+.mc .b{background:var(--c2);color:#1a1a3a;transform:rotateY(180deg)}
+.mc.up .f{transform:rotateY(180deg)}.mc.up .b{transform:rotateY(360deg)}
+.mc.hit .b{background:var(--c4)}
+.hang{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
+.pop{width:min(60vw,250px);overflow:visible}
+#body,#puddle{transition:all .9s cubic-bezier(.3,1.4,.5,1)}
+#body{transform-origin:110px 215px}
+.drip{opacity:0}.melt .drip{opacity:.9;animation:drip 1.6s ease-in infinite}
+.drip:nth-of-type(2){animation-delay:.5s!important}.drip:nth-of-type(3){animation-delay:1s!important}
+@keyframes drip{0%{transform:translateY(0) scale(.6)}80%{opacity:.9}100%{transform:translateY(72px) scale(1);opacity:0}}
+.pop{animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(1.5deg)}}
+.shiver{animation:shiver .25s infinite}
+.win{animation:jump .8s ease-in-out infinite}
+@keyframes jump{40%,60%{transform:translateY(-30px) scale(1.06,.96)}}
+#body{filter:drop-shadow(0 0 14px rgba(255,122,168,.7))}
+.rays{transform-origin:190px 30px;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#sun{transform-origin:190px 30px;transition:transform .9s}
+.tw{animation:tw 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes tw{50%{transform:scale(1.9);opacity:.3}}
+.rip{opacity:0;transform-box:fill-box;transform-origin:center}
+.melt .rip{animation:rip 2s ease-out infinite}
+@keyframes rip{from{transform:scale(.3);opacity:.8}to{transform:scale(1.8);opacity:0}}
+.streak{transition:height .9s ease-out}
+@keyframes shiver{50%{transform:translateX(2px)}}
+.word{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.word span{width:2.2em;height:2.6em;display:grid;place-items:center;font-size:1.5rem;font-weight:700;border-bottom:4px solid var(--c2)}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(40px,1fr));gap:6px;max-width:460px;margin:auto}
+.keys button{font:inherit;font-weight:700;padding:.5em 0;border-radius:10px;border:0;background:rgba(255,255,255,.9);color:#1a1a3a;cursor:pointer}
+.keys button:disabled{opacity:.35}.keys .y{background:var(--c4)}.keys .n{background:var(--bad)}
+.end{text-align:center;padding:30px 0}.end .big{font-size:4rem;animation:float 3s infinite}
+footer{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.conf{position:fixed;top:-40px;font-size:1.7rem;z-index:50;pointer-events:none;animation:fall 2.1s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(420deg)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span style="left:4%;top:20%">☀️</span><span style="left:90%;top:35%;animation-delay:2s">🍦</span><span style="left:8%;top:70%;animation-delay:4s">🌴</span><span style="left:86%;top:80%;animation-delay:1s">🏖️</span><span style="left:48%;top:92%;animation-delay:3s">🍉</span></div>
+<div class="app">
+<header>
+<h1 class="neon">☀️ Pack verano jugando en inglés ☀️</h1>
+<div class="lvl">Nivel 3</div>
+<h2 class="neon sub">Pronombres personales y Verbo To Be</h2>
+<div class="meter"><span id="stars">⭐ 0/10</span><div class="bar"><i id="fill"></i></div><span>⏱ 30 min</span></div>
+<nav id="nav" aria-label="Actividades"></nav>
+</header>
+<main id="stage" class="panel"></main>
+<footer><button id="prev" class="btn">◀ Anterior</button><button id="next" class="btn go">Siguiente ▶</button></footer>
+</div>
+<script>
+"use strict";
+/* ========== Utilidades ========== */
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const shuffle = a => { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
+const shake = e => { e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); };
+
+/* ========== Servicios: sonido y efectos ========== */
+const Sound = (() => {
+  let ctx;
+  const beep = (notes, type = "sine") => {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      notes.forEach(([f, t, d]) => {
+        const o = ctx.createOscillator(), g = ctx.createGain(), s = ctx.currentTime + t;
+        o.type = type; o.frequency.value = f; o.connect(g); g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.18, s); g.gain.exponentialRampToValueAtTime(0.001, s + d);
+        o.start(s); o.stop(s + d);
+      });
+    } catch (e) { /* sin audio */ }
+  };
+  const speak = (text, lang = "en-US") => {
+    try {
+      const s = window.speechSynthesis; s.cancel();
+      const u = new SpeechSynthesisUtterance(text); u.lang = lang; u.rate = 0.85;
+      const norm = v => v.lang.replace("_", "-");
+      const v = s.getVoices().find(x => norm(x) === lang) || s.getVoices().find(x => norm(x).startsWith(lang.slice(0, 2)));
+      if (v) u.voice = v;
+      s.speak(u);
+    } catch (e) { /* sin voz */ }
+  };
+  return {
+    speak, pop: () => beep([[520, 0, .08]]), bad: () => beep([[200, 0, .25]], "sawtooth"),
+    ok: () => beep([[660, 0, .12], [880, .1, .2]]),
+    win: () => beep([[523, 0, .15], [659, .15, .15], [784, .3, .15], [1046, .45, .35]])
+  };
+})();
+const Fx = {
+  burst(n = 18) {
+    const icons = ["🎉", "⭐", "🍦", "☀️", "🌴", "✨"];
+    for (let i = 0; i < n; i++) {
+      const s = el("span", "conf", icons[i % icons.length]);
+      s.style.cssText = `left:${Math.random() * 100}vw;--dx:${(Math.random() - .5) * 200}px;animation-delay:${Math.random() * .3}s`;
+      document.body.append(s); setTimeout(() => s.remove(), 2500);
+    }
+  }
+};
+
+/* ========== Contenido ========== */
+const PRON = [
+  ["I", "yo", "am", "🙋"], ["You", "tú / ustedes", "are", "👉"], ["He", "él", "is", "👦"],
+  ["She", "ella", "is", "👧"], ["It", "eso (cosa o animal)", "is", "🐶"], ["We", "nosotros", "are", "🧑‍🤝‍🧑"],
+  ["They", "ellos / ellas", "are", "👨‍👩‍👧"]
+];
+const SENTENCES = [["She is happy", "Ella está feliz"], ["We are friends", "Nosotros somos amigos"], ["I am a student", "Yo soy estudiante"], ["They are at home", "Ellos están en casa"], ["He is my brother", "Él es mi hermano"]];
+const QUIZ = [
+  { q: "She <b>___</b> happy.", o: ["am", "is", "are"], a: 1 },
+  { q: "We <b>___</b> friends.", o: ["am", "is", "are"], a: 2 },
+  { q: "I <b>___</b> a student.", o: ["am", "is", "are"], a: 0 },
+  { q: "They <b>___</b> at home.", o: ["am", "is", "are"], a: 2 },
+  { q: "¿Qué pronombre reemplaza a <b>María</b>?", o: ["He", "She", "It"], a: 1 },
+  { q: "My dog is big. <b>___</b> is big. (Mi perro es grande)", o: ["He", "They", "It"], a: 2 }
+];
+const LISTEN = [
+  { q: "Escucha y elige la frase correcta 👂", say: "She is happy", o: ["She is happy", "He is happy", "We are happy"], a: 0 },
+  { q: "Escucha y elige la frase correcta 👂", say: "They are friends", o: ["We are friends", "They are friends", "You are friends"], a: 1 },
+  { q: "Escucha y elige la frase correcta 👂", say: "I am a student", o: ["I am a student", "It is a student", "You are a student"], a: 0 },
+  { q: "Escucha y elige la frase correcta 👂", say: "We are at school", o: ["He is at school", "We are at school", "They are at school"], a: 1 }
+];
+const TRUEFALSE = [
+  { q: "Con <b>They</b> usamos <b>are</b>.", o: ["Verdadero", "Falso"], a: 0 },
+  { q: "Con <b>I</b> usamos <b>is</b>.", o: ["Verdadero", "Falso"], a: 1 },
+  { q: "<b>It</b> se usa para cosas y animales.", o: ["Verdadero", "Falso"], a: 0 },
+  { q: "<b>We</b> significa «ellos».", o: ["Verdadero", "Falso"], a: 1 },
+  { q: "<b>She is</b> se usa para hablar de una niña.", o: ["Verdadero", "Falso"], a: 0 }
+];
+const HANG = [["SHE", "ella"], ["THEY", "ellos / ellas"], ["YOU", "tú / ustedes"], ["WE", "nosotros"]];
+
+/* ========== Progreso ========== */
+const Progress = {
+  done: new Set(), total: 10,
+  mark(id) {
+    this.done.add(id);
+    document.querySelector(`[data-id="${id}"]`).classList.add("ok");
+    document.getElementById("stars").textContent = `⭐ ${this.done.size}/${this.total}`;
+    document.getElementById("fill").style.width = `${this.done.size / this.total * 100}%`;
+  }
+};
+function finish(box, id, msg = "¡Lo lograste!") {
+  Progress.mark(id); Sound.win(); Fx.burst(36);
+  box.innerHTML = "";
+  const all = Progress.done.size === Progress.total;
+  box.append(el("div", "end", `<div class="big">${all ? "🏆" : "🎉"}</div><h3>${all ? "¡Felicitaciones! Completaste toda la clase" : msg}</h3><p class="tip">${all ? "Ya dominas los pronombres personales y el verbo To Be. ¡Disfruta tu verano! 🌴" : "Toca «Siguiente» para seguir jugando."}</p>`));
+}
+
+/* ========== Motor genérico de preguntas de opción múltiple ========== */
+function choiceGame(box, id, items, { shuffleOpts = true } = {}) {
+  let i = 0;
+  const draw = () => {
+    const it = items[i];
+    const opts = it.o.map((t, k) => ({ t, ok: k === it.a }));
+    const list = shuffleOpts ? shuffle(opts) : opts;
+    let pick = null, solved = false;
+    box.innerHTML = "";
+    box.append(el("span", "pill", `Pregunta ${i + 1} de ${items.length}`), el("h3", "q", it.q));
+    if (it.say) { const b = el("button", "btn", "🔊 Escuchar"); b.onclick = () => Sound.speak(it.say); box.append(b); }
+    const wrap = el("div", "opts"), fb = el("p", "fb");
+    const btns = list.map(o => {
+      const b = el("button", "opt", o.t);
+      b.onclick = () => { if (solved) return; Sound.pop(); pick = o; btns.forEach(x => x.classList.remove("sel")); b.classList.add("sel"); fb.textContent = ""; };
+      return b;
+    });
+    wrap.append(...btns);
+    const chk = el("button", "btn go", "✔ Verificar"), nxt = el("button", "btn next", "Continuar ▶");
+    nxt.hidden = true;
+    chk.onclick = () => {
+      if (!pick) { fb.className = "fb"; fb.textContent = "Elige una opción primero 👆"; return; }
+      const btn = btns[list.indexOf(pick)];
+      if (pick.ok) { solved = true; Sound.ok(); Fx.burst(10); fb.className = "fb good"; fb.textContent = "¡Correcto! 🎉"; btn.classList.add("good"); chk.hidden = true; nxt.hidden = false; }
+      else { Sound.bad(); fb.className = "fb bad"; fb.textContent = "Casi… ¡inténtalo otra vez! 💪"; btn.classList.remove("sel"); pick = null; shake(btn); }
+    };
+    nxt.onclick = () => (++i < items.length ? draw() : finish(box, id));
+    box.append(wrap, fb, chk, nxt);
+  };
+  draw();
+}
+
+/* ========== Actividades ========== */
+function intro(box, id) {
+  const text = "¡Hola! Hoy vas a aprender dos cosas. Primero, los pronombres personales. Son siete: I, que significa yo. You, que significa tú o ustedes. He, que significa él. She, que significa ella. It, que se usa para animales y cosas. We, que significa nosotros. Y They, que significa ellos o ellas. Los pronombres reemplazan el nombre de una persona, un animal o una cosa. Segundo, el verbo To Be, que significa ser o estar. Este verbo es una sola palabra, pero tiene tres formas: am, is y are. Con I usamos am. Con He, She e It usamos is. Con You, We y They usamos are. Por ejemplo: She is happy, que significa Ella está feliz. Toca cada fila para escuchar cómo se pronuncia. ¡Vamos a jugar!";
+  box.append(el("h3", "", "🏠 ¡Bienvenido a la clase!"));
+  const block = (title, html) => { const d = el("div", "row", `<div><h3 style="margin:0 0 .3em">${title}</h3>${html}</div>`); d.style.marginBottom = "12px"; box.append(d); };
+  block("1️⃣ ¿Cuáles son los pronombres personales?", "<p style=\"margin:.2em 0\">Son <b>7 palabras</b> que reemplazan el nombre de una persona, un animal o una cosa: <b>I</b> (yo), <b>You</b> (tú / ustedes), <b>He</b> (él), <b>She</b> (ella), <b>It</b> (eso: animal o cosa), <b>We</b> (nosotros) y <b>They</b> (ellos / ellas).</p><p style=\"margin:.2em 0\">Ejemplo: en vez de decir «María es feliz», decimos «<b>She</b> is happy» (Ella es feliz).</p>");
+  block("2️⃣ ¿Cuál es el verbo To Be?", "<p style=\"margin:.2em 0\"><b>To Be</b> es un verbo que significa <b>ser</b> o <b>estar</b>. No es un pronombre: es la palabra que va después del pronombre. Tiene <b>3 formas</b>: <b>am</b>, <b>is</b> y <b>are</b>.</p>");
+  block("3️⃣ ¿Cómo se combinan?", "<p style=\"margin:.2em 0\">Cada pronombre usa una forma distinta de To Be:</p><p style=\"margin:.2em 0\">👉 <b>I</b> → <b>am</b> (I am)<br>👉 <b>He, She, It</b> → <b>is</b> (She is)<br>👉 <b>You, We, They</b> → <b>are</b> (They are)</p><p style=\"margin:.2em 0\">Ejemplos: <b>I am</b> a student (Yo soy estudiante) · <b>We are</b> friends (Nosotros somos amigos).</p>");
+  const talk = el("div", "talk"), b = el("button", "btn go", "🔊 Escuchar la explicación");
+  b.onclick = () => Sound.speak(text, "es-ES");
+  talk.append(b); box.append(talk);
+  box.append(el("p", "tip", "👇 Toca cada frase para escucharla:"));
+  PRON.forEach(([en, es, be]) => {
+    const r = el("button", "say", `<span>${en} <em>${be}</em></span><span>${es} 🔊</span>`);
+    r.style.marginBottom = "8px";
+    r.onclick = () => { Sound.pop(); Sound.speak(`${en} ${be}`); };
+    box.append(r);
+  });
+  Progress.mark(id);
+}
+
+function vocabulary(box, id) {
+  box.append(el("h3", "", "📖 Vocabulario"), el("h3", "", "1️⃣ Los pronombres personales"), el("p", "tip", "Toca una tarjeta para escuchar cada pronombre."));
+  const grid = el("div", "cards");
+  PRON.forEach(([en, es, be, emoji]) => {
+    const c = el("button", "vc", `<span class="e">${emoji}</span><b>${en}</b><span>${es}</span>`);
+    c.onclick = () => { Sound.pop(); Sound.speak(en); };
+    grid.append(c);
+  });
+  box.append(grid);
+  box.append(el("h3", "", "2️⃣ Cada pronombre con el verbo To Be"), el("p", "tip", "Toca cada fila para escuchar la frase completa."));
+  const BE_ES = ["yo soy / estoy", "tú eres / estás (ustedes son / están)", "él es / está", "ella es / está", "eso es / está", "nosotros somos / estamos", "ellos son / están"];
+  PRON.forEach(([en, , be], k) => {
+    const r = el("button", "say", `<span>${en} <em>${be}</em></span><span>${BE_ES[k]} 🔊</span>`);
+    r.style.marginBottom = "8px";
+    r.onclick = () => { Sound.pop(); Sound.speak(`${en} ${be}`); };
+    box.append(r);
+  });
+  Progress.mark(id);
+}
+
+function quiz(box, id) { choiceGame(box, id, QUIZ); }
+function listening(box, id) { choiceGame(box, id, LISTEN); }
+function trueFalse(box, id) { choiceGame(box, id, TRUEFALSE, { shuffleOpts: false }); }
+
+function matching(box, id) {
+  box.append(el("h3", "", "🔗 Emparejar"), el("p", "tip", "Elige el significado en español de cada pronombre. Toca 🔊 para escucharlo."));
+  const meanings = shuffle(PRON.map(p => p[1]));
+  const rows = PRON.map(([en, es]) => {
+    const r = el("div", "row"), b = el("button", "btn sm", `🔊 ${en}`), s = el("select");
+    b.onclick = () => Sound.speak(en);
+    s.innerHTML = `<option value="">Elige…</option>${meanings.map(m => `<option>${m}</option>`).join("")}`;
+    r.append(b, s); box.append(r);
+    return { r, s, es };
+  });
+  const fb = el("p", "fb"), chk = el("button", "btn go", "✔ Verificar");
+  chk.onclick = () => {
+    let good = 0, empty = 0;
+    rows.forEach(({ r, s, es }) => {
+      const ok = s.value === es; if (!s.value) empty++;
+      r.classList.toggle("good", ok); r.classList.toggle("bad", !!s.value && !ok); if (ok) good++;
+    });
+    if (good === rows.length) return finish(box, id);
+    Sound.bad(); fb.className = "fb bad";
+    fb.textContent = empty ? "Faltan algunas por elegir 👀" : "Revisa las filas en rojo y vuelve a intentar 💪";
+  };
+  box.append(fb, chk);
+}
+
+function scramble(box, id) {
+  let i = 0;
+  const draw = () => {
+    const [en, es] = SENTENCES[i], goal = en.split(" ");
+    let pool, made = [];
+    do { pool = shuffle(goal.map((w, k) => ({ w, k }))); } while (pool.every((x, k) => x.k === k));
+    box.innerHTML = "";
+    box.append(el("h3", "", "🔀 Revoltijo"), el("p", "tip", `Ordena las palabras: <b>${es}</b> (${i + 1}/${SENTENCES.length})`));
+    const ans = el("div", "zone ans"), src = el("div", "zone"), fb = el("p", "fb");
+    const render = () => {
+      ans.innerHTML = ""; src.innerHTML = "";
+      made.forEach(x => { const b = el("button", "w", x.w); b.onclick = () => { made = made.filter(y => y !== x); pool.push(x); Sound.pop(); render(); }; ans.append(b); });
+      pool.forEach(x => { const b = el("button", "w", x.w); b.onclick = () => { pool = pool.filter(y => y !== x); made.push(x); Sound.pop(); render(); }; src.append(b); });
+    };
+    const chk = el("button", "btn go", "✔ Verificar"), nxt = el("button", "btn next", "Continuar ▶");
+    nxt.hidden = true;
+    chk.onclick = () => {
+      if (made.map(x => x.w).join(" ") === en) { Sound.ok(); Sound.speak(en); fb.className = "fb good"; fb.textContent = "¡Perfecto! 🎉"; chk.hidden = true; nxt.hidden = false; }
+      else { Sound.bad(); fb.className = "fb bad"; fb.textContent = "Todavía no está en orden. ¡Tú puedes! 💪"; shake(ans); }
+    };
+    nxt.onclick = () => (++i < SENTENCES.length ? draw() : finish(box, id));
+    render(); box.append(ans, src, fb, chk, nxt);
+  };
+  draw();
+}
+
+/* Sopa de letras: palabras solo horizontales/verticales y sin cruzarse */
+const WS = { size: 8, words: ["THEY", "SHE", "YOU", "WE", "ARE", "IT"], letters: "ABCDEFGHIJKLMNOPRSTUVWY",
+  clues: { THEY: "ellos / ellas", SHE: "ella", YOU: "tú", WE: "nosotros", ARE: "To Be con you, we, they", IT: "eso (cosa o animal)" } };
+function placeWord(grid, word, n) {
+  for (let t = 0; t < 300; t++) {
+    const horiz = Math.random() < 0.5, len = word.length;
+    const r = Math.floor(Math.random() * (horiz ? n : n - len + 1)), c = Math.floor(Math.random() * (horiz ? n - len + 1 : n));
+    const cells = [...word].map((_, k) => (horiz ? r * n + c + k : (r + k) * n + c));
+    if (cells.every(i => !grid[i])) { cells.forEach((i, k) => { grid[i] = word[k]; }); return true; }
+  }
+  return false;
+}
+function buildGrid({ size, words, letters }) {
+  for (;;) {
+    const g = Array(size * size).fill("");
+    if (words.every(w => placeWord(g, w, size))) return g.map(c => c || letters[Math.floor(Math.random() * letters.length)]);
+  }
+}
+function wordSearch(box, id) {
+  const n = WS.size, g = buildGrid(WS), sel = new Set(), found = new Set();
+  box.append(el("h3", "", "🔍 Sopa de letras"), el("p", "tip", "Busca las palabras en inglés (solo horizontal ➡️ o vertical ⬇️). Toca las letras y pulsa Verificar."));
+  const grid = el("div", "ws"), cells = g.map((ch, i) => {
+    const b = el("button", "", ch);
+    b.onclick = () => { Sound.pop(); sel.has(i) ? sel.delete(i) : sel.add(i); b.classList.toggle("sel"); };
+    return b;
+  });
+  grid.append(...cells);
+  const list = el("ul", "clues"), items = {};
+  WS.words.forEach(w => { items[w] = el("li", "", `🔎 ${WS.clues[w]} (${w.length} letras)`); list.append(items[w]); });
+  const fb = el("p", "fb"), chk = el("button", "btn go", "✔ Verificar selección");
+  const isLine = idx => idx.length > 1 && (
+    (idx.every(i => Math.floor(i / n) === Math.floor(idx[0] / n)) && idx.every((v, k) => v === idx[0] + k)) ||
+    idx.every((v, k) => v === idx[0] + k * n));
+  chk.onclick = () => {
+    const idx = [...sel].sort((a, b) => a - b), word = idx.map(i => g[i]).join("");
+    const ok = isLine(idx) && WS.words.includes(word) && !found.has(word);
+    if (ok) {
+      found.add(word); idx.forEach(i => { cells[i].classList.remove("sel"); cells[i].classList.add("found"); });
+      items[word].classList.add("done"); Sound.ok(); Fx.burst(8); fb.className = "fb good"; fb.textContent = "¡Encontraste una! 🎉";
+      if (found.size === WS.words.length) setTimeout(() => finish(box, id), 700);
+    } else { Sound.bad(); fb.className = "fb bad"; fb.textContent = "Esa selección no es una palabra. ¡Sigue buscando! 🔎"; shake(grid); idx.forEach(i => cells[i].classList.remove("sel")); }
+    sel.clear();
+  };
+  box.append(grid, fb, chk, list);
+}
+
+function memory(box, id) {
+  box.append(el("h3", "", "🧠 Memoria"), el("p", "tip", "Encuentra cada pronombre en inglés con su significado en español."));
+  const base = PRON.slice(0, 6).filter((_, k) => k !== 4 || true);
+  const deck = shuffle(base.flatMap(([en, es], k) => [{ k, t: en, en: true }, { k, t: es.split(" /")[0], en: false }]));
+  const grid = el("div", "mem"), moves = el("p", "fb", "Intentos: 0");
+  let first = null, lock = false, hits = 0, tries = 0;
+  deck.forEach(card => {
+    const c = el("button", "mc", `<div class="f">❓</div><div class="b">${card.t}</div>`);
+    c.onclick = () => {
+      if (lock || c.classList.contains("up")) return;
+      c.classList.add("up"); Sound.pop(); if (card.en) Sound.speak(card.t);
+      if (!first) { first = { card, c }; return; }
+      tries++; moves.textContent = `Intentos: ${tries}`;
+      if (first.card.k === card.k) {
+        [first.c, c].forEach(x => x.classList.add("hit")); Sound.ok(); first = null;
+        if (++hits === base.length) setTimeout(() => finish(box, id), 800);
+      } else {
+        lock = true; const a = first.c; first = null;
+        setTimeout(() => { a.classList.remove("up"); c.classList.remove("up"); lock = false; Sound.bad(); }, 900);
+      }
+    };
+    grid.append(c);
+  });
+  box.append(grid, moves);
+}
+
+/* Paleta que se derrite (ahorcado) */
+const POP_SVG = `<svg class="pop" id="popsvg" viewBox="0 0 220 300" role="img" aria-label="Paleta de helado">
+<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fa2"/><stop offset=".55" stop-color="#ff9a3c"/><stop offset="1" stop-color="#ffd23f"/></linearGradient></defs>
+<ellipse id="puddle" cx="110" cy="288" rx="0" ry="9" fill="#ff7aa8" opacity=".85"/>
+<rect x="98" y="195" width="24" height="92" rx="12" fill="#f3d9a4"/>
+<g id="body"><path d="M50 215V85a60 60 0 0 1 120 0v130z" fill="url(#gr)"/>
+<rect x="64" y="62" width="14" height="110" rx="7" fill="#fff" opacity=".35"/>
+<circle cx="92" cy="115" r="9" fill="#fff"/><circle cx="128" cy="115" r="9" fill="#fff"/>
+<circle id="e1" cx="92" cy="116" r="4.5" fill="#222"/><circle id="e2" cx="128" cy="116" r="4.5" fill="#222"/>
+<path id="mouth" d="M92 140Q110 158 128 140" fill="none" stroke="#222" stroke-width="5" stroke-linecap="round"/></g>
+<g id="sun"><g class="rays" stroke="#ffd23f" stroke-width="4" stroke-linecap="round"><path d="M190-2v-6M190 62v6M158 30h-6M222 30h6M167 7l-4-4M213 53l4 4M213 7l4-4M167 53l-4 4"/></g><circle id="sunc" cx="190" cy="30" r="20" fill="#ffd23f"/></g>
+<rect class="streak" x="57" y="214" width="10" height="0" rx="5" fill="#ff7aa8"/><rect class="streak" x="105" y="214" width="10" height="0" rx="5" fill="#ff9a3c"/><rect class="streak" x="153" y="214" width="10" height="0" rx="5" fill="#ffd23f"/>
+<ellipse class="rip" cx="110" cy="288" rx="40" ry="6" fill="none" stroke="#fff" stroke-width="2"/><ellipse class="rip" cx="110" cy="288" rx="40" ry="6" fill="none" stroke="#fff" stroke-width="2" style="animation-delay:1s"/>
+<path class="tw" d="M24 61l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#fff"/><path class="tw" style="animation-delay:.5s" d="M198 111l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#fff"/><path class="tw" style="animation-delay:.9s" d="M28 181l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#fff"/>
+<circle class="drip" cx="62" cy="216" r="7" fill="#ff7aa8"/><circle class="drip" cx="110" cy="216" r="7" fill="#ff9a3c"/><circle class="drip" cx="158" cy="216" r="7" fill="#ffd23f"/>
+</svg>`;
+function hangman(box, id) {
+  const MAX = 6; let r = 0;
+  const round = () => {
+    const [word, clue] = HANG[r], got = new Set(); let lives = MAX, over = false;
+    box.innerHTML = "";
+    box.append(el("h3", "", "🍦 ¡Salva la paleta!"), el("p", "tip", `Adivina la palabra en inglés: <b>${clue}</b>. Cada error derrite la paleta (${r + 1}/${HANG.length}).`));
+    const wrap = el("div", "hang"); wrap.innerHTML = POP_SVG; box.append(wrap);
+    const svg = wrap.firstElementChild, body = svg.querySelector("#body"), puddle = svg.querySelector("#puddle"), mouth = svg.querySelector("#mouth");
+    const wordEl = el("div", "word"), fb = el("p", "fb"), keys = el("div", "keys");
+    const showWord = () => { wordEl.innerHTML = [...word].map(c => `<span>${got.has(c) ? c : ""}</span>`).join(""); };
+    const melt = () => {
+      const p = (MAX - lives) / MAX;
+      body.style.transform = `scale(${1 + p * .3},${1 - p * .88})`;
+      puddle.setAttribute("rx", p * 85);
+      svg.classList.toggle("melt", p > 0); svg.classList.toggle("shiver", p >= .5 && lives > 0);
+      svg.querySelector("#sun").style.transform = `scale(${1 + p * .9})`;
+      svg.querySelector("#sunc").setAttribute("fill", p > .6 ? "#ff7a3c" : "#ffd23f");
+      svg.querySelectorAll(".streak").forEach((s, k) => s.setAttribute("height", p * [40, 62, 48][k]));
+      ["#e1", "#e2"].forEach(q => svg.querySelector(q).setAttribute("r", p >= .5 ? 2.5 : 4.5));
+      mouth.setAttribute("d", p >= .5 ? "M92 148Q110 130 128 148" : "M92 140Q110 158 128 140");
+    };
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(ch => {
+      const k = el("button", "", ch);
+      k.onclick = () => {
+        if (over) return; k.disabled = true;
+        if (word.includes(ch)) {
+          got.add(ch); k.classList.add("y"); Sound.ok(); showWord();
+          if ([...word].every(c => got.has(c))) {
+            over = true; Fx.burst(24); Sound.speak(word);
+            svg.classList.remove("shiver"); svg.classList.add("win"); mouth.setAttribute("d", "M92 140Q110 164 128 140"); fb.className = "fb good"; fb.textContent = "¡Salvaste la paleta! 🍦🎉";
+            const n = el("button", "btn next", "Continuar ▶"); n.onclick = () => (++r < HANG.length ? round() : finish(box, id)); box.append(n);
+          }
+        } else {
+          k.classList.add("n"); Sound.bad(); lives--; melt();
+          if (!lives) {
+            over = true; fb.className = "fb bad"; fb.textContent = "¡Oh no, se derritió! 😢 Inténtalo otra vez.";
+            const n = el("button", "btn go", "↻ Reintentar"); n.onclick = round; box.append(n);
+          }
+        }
+      };
+      keys.append(k);
+    });
+    showWord(); box.append(wordEl, fb, keys);
+  };
+  round();
+}
+
+function finale(box) {
+  const left = GAMES.filter(g => g.id !== "end" && !Progress.done.has(g.id));
+  const all = !left.length;
+  if (all) { Sound.win(); Fx.burst(40); }
+  box.append(el("div", "end", `<div class="big">${all ? "🏆" : "🏁"}</div><h3>${all ? "¡Completaste el Pack verano!" : "¡Ya casi terminas!"}</h3>`));
+  box.append(el("p", "", all
+    ? "Hoy aprendiste los <b>7 pronombres personales</b> y las <b>3 formas del verbo To Be</b>. ¡Excelente trabajo, sigue practicando y disfruta tu verano! 🌴"
+    : `Te faltan ${left.length} actividad(es): ${left.map(g => g.name).join(", ")}. Puedes volver a ellas cuando quieras.`));
+  const recap = el("div", "row", `<div><h3 style="margin:0 0 .3em">📝 Recuerda</h3><p style="margin:.2em 0"><b>I</b> → <b>am</b><br><b>He, She, It</b> → <b>is</b><br><b>You, We, They</b> → <b>are</b></p></div>`);
+  const talk = el("div", "talk"), a = el("button", "btn", "🔊 Repasar en voz alta"), b = el("button", "btn go", "↻ Empezar de nuevo");
+  a.onclick = () => Sound.speak(PRON.map(([en, , be]) => `${en} ${be}`).join(". "));
+  b.onclick = () => Nav.go(0);
+  talk.append(a, b); box.append(recap, talk);
+}
+
+/* ========== Registro de actividades y navegación ========== */
+const GAMES = [
+  { id: "intro", name: "🏠 Inicio", run: intro }, { id: "vocab", name: "📖 Vocabulario", run: vocabulary },
+  { id: "quiz", name: "❓ Quiz", run: quiz }, { id: "match", name: "🔗 Emparejar", run: matching },
+  { id: "scramble", name: "🔀 Revoltijo", run: scramble }, { id: "search", name: "🔍 Sopa", run: wordSearch },
+  { id: "memory", name: "🧠 Memoria", run: memory }, { id: "pop", name: "🍦 Paleta", run: hangman },
+  { id: "listen", name: "👂 Escucha", run: listening }, { id: "tf", name: "✅ V o F", run: trueFalse }, { id: "end", name: "🏁 Final", run: finale }
+];
+const Nav = (() => {
+  let cur = 0;
+  const stage = document.getElementById("stage"), nav = document.getElementById("nav");
+  const chips = GAMES.map((g, i) => {
+    const c = el("button", "chip", g.name); c.dataset.id = g.id; c.onclick = () => go(i); nav.append(c); return c;
+  });
+  function go(i) {
+    cur = Math.max(0, Math.min(GAMES.length - 1, i));
+    chips.forEach((c, k) => c.classList.toggle("on", k === cur));
+    chips[cur].scrollIntoView({ inline: "center", block: "nearest" });
+    stage.innerHTML = ""; window.speechSynthesis && window.speechSynthesis.cancel();
+    GAMES[cur].run(stage, GAMES[cur].id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  document.getElementById("prev").onclick = () => go(cur - 1);
+  document.getElementById("next").onclick = () => go(cur + 1);
+  return { go };
+})();
+if (window.speechSynthesis) window.speechSynthesis.getVoices();
+Nav.go(0);
+</script>
+</body>
+</html>
